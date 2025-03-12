@@ -24,4 +24,4 @@ if fl is not None:
     df = pd.read_csv(filename, encoding = "ISO-8859-1")
 else: 
     os.chdir(r"/Users/rainier/Documents/Projects/DataAnalysis")
-    df = pd.read_csv("___.csv", encoding = "ISO-8859-1")
+    df = pd.read_csv("wages_cleaned.csv", encoding = "ISO-8859-1")
