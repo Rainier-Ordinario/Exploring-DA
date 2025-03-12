@@ -27,7 +27,11 @@ st.markdown('<style>div.block-container{padding-top:2rem;}</style>',unsafe_allow
 #     os.chdir(r"/Users/rainier/Documents/Projects/DataAnalysis/Exploring-DA")
 #     df = pd.read_csv("Superstore.csv", encoding = "ISO-8859-1")
 
-df = pd.read_csv("superstore.csv", encoding="ISO-8859-1")
+# df = pd.read_csv("superstore.csv", encoding="ISO-8859-1")
+
+url = 'https://github.com/Rainier-Ordinario/Exploring-DA/blob/main/Superstore.csv'
+df = pd.read_csv(url, encoding="ISO-8859-1")
+
 
 # Allow users to select a date
 col1, col2 = st.columns((2))
