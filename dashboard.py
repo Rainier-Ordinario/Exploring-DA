@@ -25,3 +25,20 @@ if fl is not None:
 else: 
     os.chdir(r"/Users/rainier/Documents/Projects/DataAnalysis")
     df = pd.read_csv("wages_cleaned.csv", encoding = "ISO-8859-1")
+
+# Allow users to select a date
+col1, col2 = st.columns((2))
+df["Order Date"] = pd.to_datetime(df["Order Date"])
+
+# Get the minimum and maximum date
+startDate = pd.to_datetime(df["Order Date"]).min()
+endDate = pd.to_datetime(df["Order Date"]).max()
+
+with col1:
+    date1 = pd.to_datetime(st.date_input("Start Date", startDate))
+
+with col2:
+    date2 = pd.to_datetime(st.date_input("End Date", endDate))
+
+# Filter the Data based on seleted date range
+df = df[(df["Order Date"] >= date1) & (df["Order Date"] <= date2)].copy()
