@@ -24,7 +24,7 @@ if fl is not None:
     st.write(filename)
     df = pd.read_csv(filename, encoding = "ISO-8859-1")
 else: 
-    os.chdir(r"/Users/rainier/Documents/Projects/DataAnalysis")
+    os.chdir(r"/Users/rainier/Documents/Projects/DataAnalysis/Exploring-DA")
     df = pd.read_csv("Superstore.csv", encoding = "ISO-8859-1")
 
 # Allow users to select a date
