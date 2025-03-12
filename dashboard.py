@@ -29,7 +29,7 @@ st.markdown('<style>div.block-container{padding-top:2rem;}</style>',unsafe_allow
 
 # df = pd.read_csv("superstore.csv", encoding="ISO-8859-1")
 
-url = 'https://github.com/Rainier-Ordinario/Exploring-DA/blob/main/Superstore.csv'
+url = 'https://raw.githubusercontent.com/Rainier-Ordinario/Exploring-DA/refs/heads/main/Superstore.csv'
 df = pd.read_csv(url, encoding="ISO-8859-1")
 
 
