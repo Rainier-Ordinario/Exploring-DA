@@ -82,10 +82,29 @@ elif not region and not city:
 elif state and city:
     filtered_df = df3[df["State"].isin(state) & df3["City"].isin(city)]
 elif region and city:
-    filtered_df = df3[df["State"].isin(region) & df3["City"].isin(city)]
+    filtered_df = df3[df["Region"].isin(region) & df3["City"].isin(city)]
 elif region and state:
-    filtered_df = df3[df["State"].isin(region) & df3["City"].isin(state)]
+    filtered_df = df3[df["Region"].isin(region) & df3["State"].isin(state)]
 elif city:
     filtered_df = df3[df3["City"].isin(city)]
 else:
     filtered_df = df3[df3["Region"].isin(region) & df3["State"].isin(state) & df3["City"].isin(city)]
+
+# Subheader 
+category_df = filtered_df.groupby(by = ["Category"], as_index = False)["Sales"].sum()
+
+# Bar chart for category wise sales
+with col1:
+    st.subheader("Category Sales")
+    fig = px.bar(category_df, x = "Category", y = "Sales", text = ['${:,.2f}'.format(x) for x in category_df["Sales"]],
+                 template = "seaborn")
+    
+    # Fit to screen size
+    st.plotly_chart(fig,user_container_width=True, height = 200)
+
+# Pie chart for region sales
+with col2:
+    st.subheader("Region Sales")
+    fig = px.pie(filtered_df, values = "Sales", names = "Region", hole = 0.3)
+    fig.update_traces(text = filtered_df["Region"], textposition = "outside")
+    st.plotly_chart(fig,use_container_width=True)
