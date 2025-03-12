@@ -14,7 +14,7 @@ warnings.filterwarnings('ignore')
 st.set_page_config(page_title="Title!!!", page_icon=":bar_chart:",layout="wide")
 
 # Set title and format
-st.title(" :bar_chart: Sample EDA ")
+st.title(" :bar_chart: Superstore EDA ")
 st.markdown('<style>div.block-container{padding-top:2rem;}</style>',unsafe_allow_html=True)
 
 # Allow users to upload file
@@ -198,5 +198,40 @@ with st.expander("View Data"):
 # Allow user to download the original DataSet
 csv = df.to_csv(index = False).encode('utf-8')
 st.download_button('Download Data', data = csv, file_name = "Data.csv",mime = "text/csv")
+
+'''
+Customer Surveys
+'''
+
+# Title for customer survey section
+st.title("Customer Feedback Survey")
+
+# Allow user to input
+name = st.text_input("Your Name:")
+email = st.text_input("Your Email:")
+rating = st.slider("Rate our service (1 to 5)", 1, 5)
+feedback = st.text_area("Additional Comments:")
+
+# Button to submit the survey
+if st.button("Submit Feedback"):
+    # Store the data locally (in a CSV file)
+    survey_data = pd.DataFrame({
+        "Name": [name],
+        "Email": [email],
+        "Rating": [rating],
+        "Feedback": [feedback]
+    })
+    
+    # Save responses to CSV (appends if file exists)
+    survey_data.to_csv("customer_feedback.csv", mode='a', header=False, index=False)
+    
+    # Display confirmation
+    st.success("Thank you for your feedback!")
+
+    # Optionally, display the collected data (for demonstration purposes)
+    st.write(f"Name: {name}")
+    st.write(f"Email: {email}")
+    st.write(f"Rating: {rating}")
+    st.write(f"Feedback: {feedback}")
 
 
