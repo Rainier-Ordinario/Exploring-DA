@@ -228,10 +228,10 @@ if st.button("Submit Feedback"):
     # Display confirmation
     st.success("Thank you for your feedback!")
 
-    # Optionally, display the collected data (for demonstration purposes)
-    st.write(f"Name: {name}")
-    st.write(f"Email: {email}")
-    st.write(f"Rating: {rating}")
-    st.write(f"Feedback: {feedback}")
+    # Ddisplay the collected data (for demonstration purposes)
+    # st.write(f"Name: {name}")
+    # st.write(f"Email: {email}")
+    # st.write(f"Rating: {rating}")
+    # st.write(f"Feedback: {feedback}")
 
 
