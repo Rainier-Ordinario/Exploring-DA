@@ -21,7 +21,7 @@ fl = st.file_uploader(":file_folder: Upload a file",type=(["csv","txt","xlsx"]))
 if fl is not None:
     filename = fl.name
     st.write(filename)
-    df = pd.read_csv(filename)
+    df = pd.read_csv(filename, encoding = "ISO-8859-1")
 else: 
     os.chdir(r"/Users/rainier/Documents/Projects/DataAnalysis")
-    df = pd.read_csv("___.csv")
+    df = pd.read_csv("___.csv", encoding = "ISO-8859-1")
