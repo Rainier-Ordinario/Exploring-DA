@@ -1,6 +1,6 @@
-# Title: Basic EDA
+# Title: Python Interactive Dashboard of Superstore Sales
 # Author: Rainier Ordinario
-# Description: Some Football Exploratory Data Analysis
+# Description: Exploring Data Analysis!
 
 import streamlit as st
 import plotly.express as px
@@ -151,4 +151,52 @@ fig3 = px.treemap(filtered_df, path = ["Region","Category","Sub-Category"], valu
 fig3.update_layout(width = 800, height = 650)
 st.plotly_chart(fig3, use_container_width=True)
 
-# Segment
+'''
+Segment
+'''
+
+# Create a pie chart for segment wise sales
+chart1, chart2 = st.columns((2))
+with chart1:
+    st.subheader('Segment wise Sales')
+    fig = px.pie(filtered_df, values = "Sales", names = "Segment", template = "plotly_dark")
+    fig.update_traces(text = filtered_df["Segment"], textposition = "inside")
+    st.plotly_chart(fig,use_container_width=True)
+
+# Create a pie chart for category wise sales
+with chart2:
+    st.subheader('Category wise Sales')
+    fig = px.pie(filtered_df, values = "Sales", names = "Category", template = "gridon")
+    fig.update_traces(text = filtered_df["Category"], textposition = "inside")
+    st.plotly_chart(fig,use_container_width=True)
+
+# Create summary table
+import plotly.figure_factory as ff
+st.subheader(":point_right: Month wise Sub-Category Sales Summary")
+with st.expander("Summary_Table"):
+    df_sample = df[0:5][["Region","State","City","Category","Sales","Profit","Quantity"]]
+    fig = ff.create_table(df_sample, colorscale = "Cividis")
+    st.plotly_chart(fig, user_container_width=True)
+
+    # Include a month wise sub-category table as a markdown in summary table
+    st.markdown("Month wise sub-Category Table")
+    filtered_df["month"] = filtered_df["Order Date"].dt.month_name()
+    sub_category_Year = pd.pivot_table(data = filtered_df, values = "Sales", index = ["Sub-Category"],columns = "month")
+    st.write(sub_category_Year.style.background_gradient(cmap="Blues"))
+
+# Create scatter plot 
+data1 = px.scatter(filtered_df, x = "Sales", y = "Profit", size = "Quantity")
+data1.update_layout(title="Relationship between Sales and Profit using Scatter Plot.")
+                    #    titlefont = dict(size=20),xaxis = dict(title="Sales",titlefont=dict(size=19)),
+                    #    yaxis = dict(title = "Profit", titlefont = dict(size=19)))
+st.plotly_chart(data1,use_container_width=True)
+
+# Allow user to view data
+with st.expander("View Data"):
+    st.write(filtered_df.iloc[:500,1:20:2].style.background_gradient(cmap="Oranges"))
+
+# Allow user to download the original DataSet
+csv = df.to_csv(index = False).encode('utf-8')
+st.download_button('Download Data', data = csv, file_name = "Data.csv",mime = "text/csv")
+
+
