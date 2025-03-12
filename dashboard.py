@@ -11,7 +11,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Set layout for page
-st.set_page_config(page_title="Title!!!", page_icon=":bar_chart:",layout="wide")
+st.set_page_config(page_title="Superstore EDA", page_icon=":bar_chart:",layout="wide")
 
 # Set title and format
 st.title(" :bar_chart: Superstore EDA ")
