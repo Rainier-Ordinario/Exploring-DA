@@ -20,12 +20,14 @@ st.markdown('<style>div.block-container{padding-top:2rem;}</style>',unsafe_allow
 # Allow users to upload file
 fl = st.file_uploader(":file_folder: Upload a file",type=(["csv","txt","xlsx"]))
 if fl is not None:
+    # If the user uploads a file, read the uploaded file
     filename = fl.name
     st.write(filename)
-    df = pd.read_csv(filename, encoding = "ISO-8859-1")
-else: 
-    os.chdir(r"/Users/rainier/Documents/Projects/DataAnalysis/Exploring-DA")
-    df = pd.read_csv("Superstore.csv", encoding = "ISO-8859-1")
+    df = pd.read_csv(filename, encoding="ISO-8859-1")
+else:
+    # If no file uploaded, load the file from GitHub
+    url = "https://github.com/Rainier-Ordinario/Exploring-DA/blob/main/Superstore.csv"  
+    df = pd.read_csv(url, encoding="ISO-8859-1")
 
 # Allow users to select a date
 col1, col2 = st.columns((2))
