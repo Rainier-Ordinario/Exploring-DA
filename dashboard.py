@@ -12,6 +12,16 @@ warnings.filterwarnings('ignore')
 # Set layout for page
 st.set_page_config(page_title="Title!!!", page_icon=":bar_chart:",layout="wide")
 
-# Set title
+# Set title and format
 st.title(" :bar_chart: Sample EDA ")
+st.markdown('<style>div.block-container{padding-top:2rem;}</style>',unsafe_allow_html=True)
 
+# Allow users to upload file
+fl = st.file_uploader(":file_folder: Upload a file",type=(["csv","txt","xlsx"]))
+if fl is not None:
+    filename = fl.name
+    st.write(filename)
+    df = pd.read_csv(filename)
+else: 
+    os.chdir(r"/Users/rainier/Documents/Projects/DataAnalysis")
+    df = pd.read_csv("___.csv")
