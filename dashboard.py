@@ -5,7 +5,7 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
-import matplotlib as plt
+import matplotlib as plt                      
 import os
 import warnings
 warnings.filterwarnings('ignore')
@@ -14,7 +14,7 @@ warnings.filterwarnings('ignore')
 st.set_page_config(page_title="Superstore EDA", page_icon=":bar_chart:",layout="wide")
 
 # Set title and format
-st.title(" :bar_chart: Superstore EDA ")
+st.title(" :bar_chart: Superstore EDA by Rainier Ordinario ")
 st.markdown('<style>div.block-container{padding-top:2rem;}</style>',unsafe_allow_html=True)
 
 # Allow users to upload file
