@@ -198,7 +198,7 @@ data1.update_layout(title="Relationship between Sales and Profit using Scatter P
                     #    yaxis = dict(title = "Profit", titlefont = dict(size=19)))
 st.plotly_chart(data1,use_container_width=True)
 
-# Allow user to view data
+# Allow user to view data in a table
 with st.expander("View Data"):
     st.write(filtered_df.iloc[:500,1:20:2].style.background_gradient(cmap="Oranges"))
 
@@ -213,7 +213,7 @@ Customer Surveys
 # Title for customer survey section
 st.title("Customer Feedback Survey")
 
-# Allow user to input
+# Take user input for customer surveys
 name = st.text_input("Your Name:")
 email = st.text_input("Your Email:")
 rating = st.slider("Rate our service (1 to 5)", 1, 5)
