@@ -117,7 +117,7 @@ with col2:
     fig.update_traces(text = filtered_df["Region"], textposition = "outside")
     st.plotly_chart(fig,use_container_width=True)
 
-# Allow user to Category Data
+# Category Data
 cl1, cl2 = st.columns(2)
 with cl1:
     with st.expander("Category_VewData"):
