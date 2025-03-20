@@ -42,13 +42,14 @@ df["Order Date"] = pd.to_datetime(df["Order Date"])
 startDate = pd.to_datetime(df["Order Date"]).min()
 endDate = pd.to_datetime(df["Order Date"]).max()
 
+# Allow user to select a time frame 
 with col1:
     date1 = pd.to_datetime(st.date_input("Start Date", startDate))
 
 with col2:
     date2 = pd.to_datetime(st.date_input("End Date", endDate))
 
-# Filterdata based on seleted date range
+# Filter data based on seleted date range
 df = df[(df["Order Date"] >= date1) & (df["Order Date"] <= date2)].copy()
 
 # Filter data based on region
@@ -235,4 +236,5 @@ if st.button("Submit Feedback"):
     # Display confirmation
     st.success("Thank you for your feedback!")
 
+# Label
 st.write("By Rainier Ordinario 2025")
