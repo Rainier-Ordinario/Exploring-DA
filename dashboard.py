@@ -233,7 +233,7 @@ if st.button("Submit Feedback"):
     # Save responses to CSV (appends if file exists)
     survey_data.to_csv("customer_feedback.csv", mode='a', header=False, index=False)
     
-    # Display confirmation
+    # Display confirmation of feedback
     st.success("Thank you for your feedback!")
 
 # Label
