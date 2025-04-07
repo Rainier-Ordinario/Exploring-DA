@@ -237,4 +237,4 @@ if st.button("Submit Feedback"):
     st.success("Thank you for your feedback!")
 
 # Label
-st.write("2025")
+st.write("By Rainier Ordinario 2025")
