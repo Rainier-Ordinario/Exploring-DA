@@ -215,10 +215,10 @@ Customer Surveys
 st.title("Customer Feedback Survey")
 
 # Take user input for customer surveys
-name = st.text_input("Enter your name:")
-email = st.text_input("Enter your email:")
+name = st.text_input("Enter your name: ")
+email = st.text_input("Enter your email: ")
 rating = st.slider("Rate our service (1 to 5)", 1, 5)
-feedback = st.text_area("Additional comments:")
+feedback = st.text_area("Additional comments: ")
 
 # Button to submit the survey
 if st.button("Submit Feedback"):
